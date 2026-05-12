@@ -534,10 +534,10 @@ function buildSetRow(ex, setNum, isWarmup) {
 
   return `<div class="set-row${warmupClass}" id="${rowId}">
     <span class="set-num">${label}</span>
-    ${ex.hasWeight ? `<input type="number" id="${wId}" class="set-wi" placeholder="lbs" min="0">
+    ${ex.hasWeight ? `<input type="tel" id="${wId}" class="set-wi" placeholder="lbs">
     <span class="set-unit">lbs</span>
     <span class="set-x">×</span>` : ''}
-    <input type="number" id="${rId}" class="set-ri" placeholder="${placeholder}" min="0" max="${ex.timeBased ? 300 : 60}">
+    <input type="tel" id="${rId}" class="set-ri" placeholder="${placeholder}">
     <span class="set-tgt">${ex.timeBased ? 'sec' : ex.target}</span>
     <div class="set-check" onclick="toggleSet('${id}',${setNum},${isWarmup},${ex.restSecs})">✓</div>
   </div>`;
