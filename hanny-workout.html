@@ -103,6 +103,8 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 
 .ex-note-input { width: 100%; border: 0.5px solid #EDE4DC; border-radius: 6px; padding: 6px 8px; font-size: 12px; color: #6B5D52; background: #FBF7F4; resize: none; font-family: inherit; min-height: 38px; margin-top: 8px; font-style: italic; }
 .ex-note-input::placeholder { color: #C0B2A5; }
+.timer-btn { font-size: 10px; color: #B85C5C; background: none; border: 1px solid #DDD0C5; border-radius: 6px; cursor: pointer; padding: 4px 8px; white-space: nowrap; flex-shrink: 0; font-family: inherit; }
+.timer-btn.timer-running { background: #B85C5C; color: white; border-color: #B85C5C; }
 
 /* Rest timer overlay */
 .rest-timer-overlay { display: none; position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: white; border-radius: 16px; padding: 14px 24px; text-align: center; box-shadow: 0 4px 20px rgba(184,92,92,0.35); z-index: 100; min-width: 200px; }
@@ -153,10 +155,10 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 </header>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('schedule',this)">Week</div>
-  <div class="tab" onclick="showTab('lower',this)">Tuesday</div>
-  <div class="tab" onclick="showTab('upper',this)">Thursday</div>
-  <div class="tab" onclick="showTab('tracker',this)">Log</div>
+  <div class="tab active" onclick="showTab('schedule',this)">Schedule</div>
+  <div class="tab" onclick="showTab('lower',this)">Lower</div>
+  <div class="tab" onclick="showTab('upper',this)">Upper</div>
+  <div class="tab" onclick="showTab('tracker',this)">Tracker</div>
   <div class="tab" onclick="showTab('wins',this)">Wins</div>
 </div>
 
@@ -301,6 +303,8 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 
   <div class="card"><span class="badge badge-acc">Arms (superset)</span><div class="card-title" style="margin-top:5px;">DB curl + tricep pushdown</div><div class="card-sub">2 × 12 each · 60 sec rest after the pair</div></div>
   <div class="card"><span class="badge badge-main">Glute bonus</span><div class="card-title" style="margin-top:5px;">Hip thrust or glute kickback machine</div><div class="card-sub">2 × 12 · extra glute volume on upper day</div></div>
+  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Pallof press</div><div class="card-sub">3 × 10 each side · 60 sec rest · light cable · anti-rotation</div></div>
+  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Side plank</div><div class="card-sub">2 × 20–30 sec each side · 60 sec rest · brace and breathe</div></div>
 </div>
 
 <!-- TRACKER -->
@@ -309,8 +313,8 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
   <div class="card">
     <div style="display:flex;gap:8px;margin-bottom:12px;">
       <select id="stype" style="flex:1;border:0.5px solid #DDD0C5;border-radius:10px;padding:8px 10px;font-size:13px;background:white;color:#2A1F1A;" onchange="renderTracker()">
-        <option value="lower">Tuesday — Lower</option>
-        <option value="upper">Thursday — Upper</option>
+        <option value="lower">Lower Body</option>
+        <option value="upper">Upper Body</option>
       </select>
       <input type="date" id="sdate" style="flex:1;border:0.5px solid #DDD0C5;border-radius:10px;padding:8px 10px;font-size:13px;background:white;color:#2A1F1A;">
     </div>
@@ -375,6 +379,10 @@ const UPPER = [
     variants:['DB curl + tricep pushdown','Hammer curl + rope pushdown','Preacher curl + overhead extension'] },
   { id:'glutes',    name:'Hip thrust or glute kickback',  sets:2, target:'12',      hasWeight:true,  restSecs:60, timeBased:false,
     variants:['Glute kickback machine','Hip thrust','Cable kickback','Single-leg glute bridge'] },
+  { id:'pallof',    name:'Pallof press',                 sets:3, target:'10 each side', hasWeight:true,  restSecs:60, timeBased:false,
+    variants:['Pallof press','Band Pallof press','Cable anti-rotation'] },
+  { id:'sideplank', name:'Side plank',                   sets:2, target:'20–30s each',  hasWeight:false, restSecs:60, timeBased:true,
+    variants:['Side plank','Copenhagen plank','Plank with reach'] },
 ];
 
 // State
@@ -386,6 +394,7 @@ let restTotal = 0;
 let sessionStartTime = null;
 let sessionTimerInterval = null;
 let warmupCounts = {};
+const activeExTimers = {};
 
 // ── Tab navigation ──────────────────────────────────────────────
 function showTab(name, el) {
@@ -464,6 +473,28 @@ function skipRest() {
   document.getElementById('rest-overlay').classList.remove('active');
 }
 
+// ── Exercise set timer ──────────────────────────────────────────
+function toggleExTimer(inputId, btnId) {
+  const btn = document.getElementById(btnId);
+  const input = document.getElementById(inputId);
+  if (activeExTimers[inputId]) {
+    clearInterval(activeExTimers[inputId]);
+    delete activeExTimers[inputId];
+    btn.textContent = '▶ Start';
+    btn.classList.remove('timer-running');
+  } else {
+    let secs = parseInt(input.value) || 0;
+    input.value = secs;
+    btn.textContent = '⏹ Stop';
+    btn.classList.add('timer-running');
+    startSessionTimer();
+    activeExTimers[inputId] = setInterval(() => {
+      secs++;
+      input.value = secs;
+    }, 1000);
+  }
+}
+
 // ── Render tracker ──────────────────────────────────────────────
 function renderTracker() {
   const type = document.getElementById('stype').value;
@@ -528,17 +559,19 @@ function buildSetRow(ex, setNum, isWarmup) {
   const rowId = isWarmup ? `sr-${id}-wu-${setNum}` : `sr-${id}-${setNum}`;
   const wId = isWarmup ? `w-${id}-wu-${setNum}` : `w-${id}-${setNum}`;
   const rId = isWarmup ? `r-${id}-wu-${setNum}` : `r-${id}-${setNum}`;
+  const timerId = isWarmup ? `t-${id}-wu-${setNum}` : `t-${id}-${setNum}`;
   const label = isWarmup ? `WU ${setNum}` : `Set ${setNum}`;
-  const placeholder = ex.timeBased ? 'sec' : 'reps';
   const warmupClass = isWarmup ? ' warmup-row' : '';
+  const repSection = ex.timeBased
+    ? `<input type="tel" id="${rId}" class="set-ri" placeholder="sec"><button class="timer-btn" id="${timerId}" onclick="toggleExTimer('${rId}','${timerId}')">▶ Start</button>`
+    : `<input type="tel" id="${rId}" class="set-ri" placeholder="reps"><span class="set-tgt">${ex.target}</span>`;
 
   return `<div class="set-row${warmupClass}" id="${rowId}">
     <span class="set-num">${label}</span>
     ${ex.hasWeight ? `<input type="tel" id="${wId}" class="set-wi" placeholder="lbs">
     <span class="set-unit">lbs</span>
     <span class="set-x">×</span>` : ''}
-    <input type="tel" id="${rId}" class="set-ri" placeholder="${placeholder}">
-    <span class="set-tgt">${ex.timeBased ? 'sec' : ex.target}</span>
+    ${repSection}
     <div class="set-check" onclick="toggleSet('${id}',${setNum},${isWarmup},${ex.restSecs})">✓</div>
   </div>`;
 }
@@ -791,7 +824,7 @@ function renderHistory() {
     el.innerHTML = '<div class="empty-state"><div class="es-icon">💪</div>Your first session is the hardest.<br>Log it and the rest gets easier.</div>';
     return;
   }
-  el.innerHTML = localHistory.map(s => `
+  el.innerHTML = localHistory.slice(0, 5).map(s => `
     <div class="he">
       <div class="hh">
         <div class="ht" style="color:${s.label==='Lower Body'?'#B85C5C':'#6B4C7C'}">${s.label}</div>

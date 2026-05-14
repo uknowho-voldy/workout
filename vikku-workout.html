@@ -126,6 +126,16 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 .hl { font-size: 12px; color: #555; line-height: 1.8; }
 .hn { font-size: 12px; color: #888; margin-top: 6px; font-style: italic; border-top: 0.5px solid #f0f0f0; padding-top: 6px; }
 
+.timer-btn { font-size: 10px; color: #1F3864; background: none; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; padding: 4px 8px; white-space: nowrap; flex-shrink: 0; font-family: inherit; }
+.timer-btn.timer-running { background: #1F3864; color: white; border-color: #1F3864; }
+
+.pr-card { background: #E6F1FB; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; border: 0.5px solid #e5e5e5; }
+.pr-ex { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+.pr-num { font-size: 22px; font-weight: 700; color: #1F3864; letter-spacing: -0.02em; }
+.pr-meta { font-size: 11px; color: #555; margin-top: 2px; }
+.empty-state { text-align: center; padding: 2rem 1rem; font-size: 13px; color: #888; line-height: 1.6; }
+.empty-state .es-icon { font-size: 28px; margin-bottom: 8px; }
+
 @media (max-width: 400px) { .week-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -147,6 +157,7 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
   <div class="tab" onclick="showTab('lower',this)">Lower</div>
   <div class="tab" onclick="showTab('upper',this)">Upper</div>
   <div class="tab" onclick="showTab('tracker',this)">Tracker</div>
+  <div class="tab" onclick="showTab('wins',this)">Wins</div>
 </div>
 
 <!-- REST TIMER OVERLAY -->
@@ -251,6 +262,20 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
     </div></div>
   </div>
   <div class="card"><span class="badge badge-a">Accessory</span><div class="card-title" style="margin-top:5px;">DB curl + tricep pushdown (superset)</div><div class="card-sub">2 × 12 each · 90s rest · arms last, do not skip compounds</div></div>
+  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Pallof press</div><div class="card-sub">3 × 10 each side · 90s rest · anti-rotation · cable at chest height</div></div>
+  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Decline weighted sit-up</div><div class="card-sub">3 × 8–10 reps · 90s rest · plate at chest · control the descent</div></div>
+</div>
+
+<!-- WINS -->
+<div id="tab-wins" class="page">
+  <div class="pb"><div class="pt">Your wins</div><div class="pd">Every weight you've moved · automatically tracked</div></div>
+  <div class="section-label">Personal records</div>
+  <div id="prlist">
+    <div class="empty-state">
+      <div class="es-icon">🌱</div>
+      <div>No PRs yet — log your first session.<br>Every weight you lift here becomes a record.</div>
+    </div>
+  </div>
 </div>
 
 <!-- TRACKER -->
@@ -309,6 +334,10 @@ const UPPER = [
     variants:['Lat pulldown','Cable pullover','Assisted pull-up','Single-arm cable pulldown'] },
   { id:'arms',     name:'Curl + pushdown superset',        sets:2, target:'12 each', hasWeight:true,  restSecs:90,  timeBased:false,
     variants:['Curl + pushdown superset','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
+  { id:'pallof',    name:'Pallof press',                  sets:3, target:'10 each side', hasWeight:true,  restSecs:90,  timeBased:false,
+    variants:['Pallof press','Band Pallof press','Cable anti-rotation press'] },
+  { id:'declinestup', name:'Decline weighted sit-up',     sets:3, target:'8–10',     hasWeight:true,  restSecs:90,  timeBased:false,
+    variants:['Decline weighted sit-up','Decline sit-up','Cable crunch','Weighted crunch'] },
 ];
 
 // State
@@ -320,6 +349,7 @@ let restTotal = 0;
 let sessionStartTime = null;
 let sessionTimerInterval = null;
 let warmupCounts = {};
+const activeExTimers = {};
 
 // ── Tab navigation ──────────────────────────────────────────────
 function showTab(name, el) {
@@ -328,6 +358,7 @@ function showTab(name, el) {
   document.getElementById('tab-' + name).classList.add('active');
   el.classList.add('active');
   if (name === 'tracker') { loadHistory(); renderTracker(); }
+  if (name === 'wins') { loadHistory().then(() => renderPRs()); }
 }
 
 function tog(id, btn) {
@@ -466,18 +497,19 @@ function buildSetRow(ex, setNum, isWarmup) {
   const rowId = isWarmup ? `sr-${id}-wu-${setNum}` : `sr-${id}-${setNum}`;
   const wId = isWarmup ? `w-${id}-wu-${setNum}` : `w-${id}-${setNum}`;
   const rId = isWarmup ? `r-${id}-wu-${setNum}` : `r-${id}-${setNum}`;
+  const timerId = isWarmup ? `t-${id}-wu-${setNum}` : `t-${id}-${setNum}`;
   const label = isWarmup ? `WU ${setNum}` : `Set ${setNum}`;
-  const unitLabel = ex.timeBased ? 'sec' : 'reps';
-  const placeholder = ex.timeBased ? 'sec' : 'reps';
   const warmupClass = isWarmup ? ' warmup-row' : '';
+  const repSection = ex.timeBased
+    ? `<input type="tel" id="${rId}" class="set-ri" placeholder="sec"><button class="timer-btn" id="${timerId}" onclick="toggleExTimer('${rId}','${timerId}')">▶ Start</button>`
+    : `<input type="tel" id="${rId}" class="set-ri" placeholder="reps"><span class="set-tgt">${ex.target}</span>`;
 
   return `<div class="set-row${warmupClass}" id="${rowId}">
     <span class="set-num">${label}</span>
     ${ex.hasWeight ? `<input type="tel" id="${wId}" class="set-wi" placeholder="lbs">
     <span class="set-unit">lbs</span>
     <span class="set-x">×</span>` : ''}
-    <input type="tel" id="${rId}" class="set-ri" placeholder="${placeholder}">
-    <span class="set-tgt">${ex.timeBased ? 'sec' : ex.target}</span>
+    ${repSection}
     <div class="set-check" onclick="toggleSet('${id}',${setNum},${isWarmup},${ex.restSecs})">✓</div>
   </div>`;
 }
@@ -648,6 +680,7 @@ async function loadHistory() {
     const allRows = rows.slice(1);
     // Find most recent date per session type + exercise
     const latestByTypeEx = {};
+    const allLifts = [];
     allRows.forEach(r => {
       const sessionType = r[2] === 'Lower Body' ? 'lower' : 'upper';
       // Map exercise name back to id
@@ -667,7 +700,14 @@ async function loadHistory() {
         const unit = matched.timeBased ? 's' : 'lbs';
         latestByTypeEx[key].sets.push(`${weight !== 'BW' ? weight+unit : 'BW'}×${reps}`);
       }
+
+      // For PRs
+      const weight = r[5];
+      if (r[4] !== 'Warm-up' && weight && weight !== 'BW' && !isNaN(parseFloat(weight))) {
+        allLifts.push({ exercise: r[3], weight: parseFloat(weight), reps: parseInt(r[6]) || 0, date: r[1] });
+      }
     });
+    window._allLifts = allLifts;
 
     // Populate lastSessionData
     Object.entries(latestByTypeEx).forEach(([key, val]) => {
@@ -734,7 +774,7 @@ function renderHistory() {
     el.innerHTML = '<div style="text-align:center;padding:1.5rem;font-size:13px;color:#888;">No sessions yet.</div>';
     return;
   }
-  el.innerHTML = localHistory.map(s => `
+  el.innerHTML = localHistory.slice(0, 5).map(s => `
     <div class="he">
       <div class="hh">
         <div class="ht" style="color:${s.label==='Lower Body'?'#0F6E56':'#185FA5'}">${s.label}</div>
@@ -745,10 +785,53 @@ function renderHistory() {
     </div>`).join('');
 }
 
+function renderPRs() {
+  const el = document.getElementById('prlist');
+  const lifts = window._allLifts || [];
+  if (!lifts.length) {
+    el.innerHTML = '<div class="empty-state"><div class="es-icon">🌱</div>No PRs yet — log your first session.<br>Every weight you lift here becomes a record.</div>';
+    return;
+  }
+  const prs = {};
+  lifts.forEach(l => {
+    if (!prs[l.exercise] || l.weight > prs[l.exercise].weight) prs[l.exercise] = l;
+  });
+  const sorted = Object.values(prs).sort((a,b) => b.weight - a.weight);
+  el.innerHTML = sorted.map(pr => `
+    <div class="pr-card">
+      <div class="pr-ex">${pr.exercise}</div>
+      <div class="pr-num">${pr.weight} lbs</div>
+      <div class="pr-meta">${pr.reps} reps · ${pr.date}</div>
+    </div>
+  `).join('');
+}
+
 function setSyncStatus(state, text) {
   const el = document.getElementById('sync');
   el.className = 'sync-dot ' + (state || '');
   el.textContent = text;
+}
+
+// ── Exercise set timer ──────────────────────────────────────────
+function toggleExTimer(inputId, btnId) {
+  const btn = document.getElementById(btnId);
+  const input = document.getElementById(inputId);
+  if (activeExTimers[inputId]) {
+    clearInterval(activeExTimers[inputId]);
+    delete activeExTimers[inputId];
+    btn.textContent = '▶ Start';
+    btn.classList.remove('timer-running');
+  } else {
+    let secs = parseInt(input.value) || 0;
+    input.value = secs;
+    btn.textContent = '⏹ Stop';
+    btn.classList.add('timer-running');
+    startSessionTimer();
+    activeExTimers[inputId] = setInterval(() => {
+      secs++;
+      input.value = secs;
+    }, 1000);
+  }
 }
 
 // Init
