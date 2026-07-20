@@ -19,54 +19,10 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 .session-timer { font-size: 11px; color: rgba(255,255,255,0.75); display: none; }
 .session-timer.active { display: block; }
 
-.tabs { display: flex; background: white; border-bottom: 1px solid #e5e5e5; }
-.tab { flex: 1; padding: 11px 6px; font-size: 12px; font-weight: 500; text-align: center; cursor: pointer; border-bottom: 2px solid transparent; color: #888; white-space: nowrap; transition: all 0.15s; }
-.tab.active { color: #1F3864; border-bottom-color: #1F3864; }
-
-.page { display: none; padding: 1rem; max-width: 680px; margin: 0 auto; }
-.page.active { display: block; }
+.page { padding: 1rem; max-width: 680px; margin: 0 auto; }
 
 .section-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin: 1.25rem 0 0.5rem; }
 .card { background: white; border-radius: 12px; border: 0.5px solid #e5e5e5; padding: 1rem 1.25rem; margin-bottom: 10px; }
-.card-title { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
-.card-sub { font-size: 12px; color: #888; }
-
-.week-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-.day-pill { border-radius: 10px; padding: 10px 12px; }
-.day-pill .dn { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
-.day-pill .da { font-size: 13px; font-weight: 500; line-height: 1.3; }
-.day-pill .dnt { font-size: 11px; margin-top: 3px; opacity: 0.75; }
-.pill-otf { background: #FAEEDA; } .pill-otf .dn { color: #854F0B; } .pill-otf .da { color: #633806; }
-.pill-lower { background: #E1F5EE; } .pill-lower .dn { color: #0F6E56; } .pill-lower .da { color: #085041; }
-.pill-upper { background: #E6F1FB; } .pill-upper .dn { color: #185FA5; } .pill-upper .da { color: #0C447C; }
-.pill-run { background: #EEEDFE; } .pill-run .dn { color: #534AB7; } .pill-run .da { color: #3C3489; }
-.pill-rest { background: #F1EFE8; } .pill-rest .dn { color: #5F5E5A; } .pill-rest .da { color: #444441; }
-.pill-wed { background: #FFF3CD; } .pill-wed .dn { color: #854F0B; } .pill-wed .da { color: #633806; }
-
-.alert { border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
-.alert-warn { background: #FFF3CD; color: #633806; border-left: 3px solid #EF9F27; }
-.alert-info { background: #E6F1FB; color: #0C447C; border-left: 3px solid #378ADD; }
-
-.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; margin-right: 4px; }
-.badge-p { background: #1D9E75; color: white; }
-.badge-c { background: #378ADD; color: white; }
-.badge-a { background: #888780; color: white; }
-
-.ex-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 0.5px solid #f0f0f0; }
-.ex-row:last-child { border-bottom: none; }
-.ex-name { font-size: 14px; font-weight: 500; color: #1a1a1a; }
-.ex-note { font-size: 11px; color: #888; margin-top: 2px; line-height: 1.4; }
-
-.sh { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-.stgl { background: none; border: 0.5px solid #ddd; border-radius: 20px; padding: 4px 12px; font-size: 12px; cursor: pointer; color: #555; }
-.stgl.open { background: #1F3864; color: white; border-color: #1F3864; }
-.coll { overflow: hidden; transition: max-height 0.3s; }
-.coll.closed { max-height: 0; }
-.coll.open { max-height: 600px; }
-
-.pb { background: #1F3864; color: white; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; }
-.pb .pt { font-size: 14px; font-weight: 600; }
-.pb .pd { font-size: 12px; opacity: 0.7; margin-top: 2px; }
 
 /* Tracker */
 .set-block { background: #f9f9f7; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
@@ -75,6 +31,7 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 .sbs { font-size: 11px; color: #888; margin-bottom: 4px; }
 .last-session { font-size: 11px; color: #1D9E75; margin-bottom: 8px; font-style: italic; }
 .last-session.loading { color: #aaa; }
+.last-session.none { color: #bbb; }
 
 .ex-variant-select { font-size: 12px; border: 0.5px solid #ddd; border-radius: 6px; padding: 4px 6px; color: #555; background: white; margin-bottom: 8px; width: 100%; }
 
@@ -118,6 +75,7 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 .save-btn { width: 100%; margin-top: 12px; padding: 13px; background: #1F3864; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
 .save-btn:active { opacity: 0.85; }
 .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.tracker-daylabel { flex: 1; border: 0.5px solid #ddd; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-weight: 600; color: #0F6E56; background: #E1F5EE; display: flex; align-items: center; justify-content: center; }
 
 .he { background: white; border-radius: 10px; border: 0.5px solid #e5e5e5; padding: 12px 14px; margin-bottom: 8px; }
 .hh { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
@@ -128,15 +86,6 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 
 .timer-btn { font-size: 10px; color: #1F3864; background: none; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; padding: 4px 8px; white-space: nowrap; flex-shrink: 0; font-family: inherit; }
 .timer-btn.timer-running { background: #1F3864; color: white; border-color: #1F3864; }
-
-.pr-card { background: #E6F1FB; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; border: 0.5px solid #e5e5e5; }
-.pr-ex { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
-.pr-num { font-size: 22px; font-weight: 700; color: #1F3864; letter-spacing: -0.02em; }
-.pr-meta { font-size: 11px; color: #555; margin-top: 2px; }
-.empty-state { text-align: center; padding: 2rem 1rem; font-size: 13px; color: #888; line-height: 1.6; }
-.empty-state .es-icon { font-size: 28px; margin-bottom: 8px; }
-
-@media (max-width: 400px) { .week-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -144,7 +93,7 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 <header>
   <div class="header-left">
     <h1>Vikku — Workout Plan</h1>
-    <p>Phase 1 · May 5 – June 20, 2026</p>
+    <p>2S Full-Body</p>
   </div>
   <div class="header-right">
     <div id="sync" class="sync-dot">Sheets ready</div>
@@ -152,148 +101,27 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
   </div>
 </header>
 
-<div class="tabs">
-  <div class="tab active" onclick="showTab('schedule',this)">Schedule</div>
-  <div class="tab" onclick="showTab('lower',this)">Lower</div>
-  <div class="tab" onclick="showTab('upper',this)">Upper</div>
-  <div class="tab" onclick="showTab('tracker',this)">Tracker</div>
-  <div class="tab" onclick="showTab('wins',this)">Wins</div>
-</div>
-
 <!-- REST TIMER OVERLAY -->
 <div id="rest-overlay" class="rest-timer-overlay">
   <div class="rest-timer-label">REST</div>
-  <div id="rest-count" class="rest-timer-count">1:30</div>
+  <div id="rest-count" class="rest-timer-count">2:00</div>
   <div class="rest-timer-bar"><div id="rest-bar" class="rest-timer-progress" style="width:100%"></div></div>
   <button class="rest-timer-skip" onclick="skipRest()">tap to dismiss</button>
 </div>
 
-<!-- SCHEDULE -->
-<div id="tab-schedule" class="page active">
-  <div class="pb"><div class="pt">Phase 1 — OTF 3x + InShape 2x + 1 run</div><div class="pd">May 5 to June 20 · Lower: Tuesday · Upper: Thursday</div></div>
-  <div class="section-label">Weekly schedule</div>
-  <div class="week-grid">
-    <div class="day-pill pill-otf"><div class="dn">Monday</div><div class="da">OTF 6:15am</div><div class="dnt">Full effort</div></div>
-    <div class="day-pill pill-lower"><div class="dn">Tuesday</div><div class="da">InShape — Lower</div><div class="dnt">6am · pickleball evening if energy allows</div></div>
-    <div class="day-pill pill-wed"><div class="dn">Wednesday</div><div class="da">OTF 6:15am</div><div class="dnt">Lighter on floor legs — lifted heavy yesterday</div></div>
-    <div class="day-pill pill-upper"><div class="dn">Thursday</div><div class="da">InShape — Upper</div><div class="dnt">6am · pickleball evening if energy allows</div></div>
-    <div class="day-pill pill-otf"><div class="dn">Friday</div><div class="da">OTF 6:15am</div><div class="dnt">Full effort — legs are fresher</div></div>
-    <div class="day-pill pill-run"><div class="dn">Saturday</div><div class="da">Outdoor run</div><div class="dnt">2–3 miles · HR under 145 · ~13:00/mi</div></div>
-    <div class="day-pill pill-rest" style="grid-column:1/-1"><div class="dn">Sunday</div><div class="da">Full rest — non-negotiable</div></div>
-  </div>
-  <div class="alert alert-warn">Wednesday OTF: lighter on floor legs. You lifted heavy Tuesday. Upper body and cardio always full effort.</div>
-  <div class="section-label">The only rule that matters</div>
-  <div class="card"><div class="card-title">Progressive overload</div><div class="card-sub" style="margin-top:6px;line-height:1.6;">Hit the top of your rep range on any primary lift? Add 5 lbs next session. Track every weight in the Tracker tab every single session. No tracking = no progression.</div></div>
-  <div class="section-label">6-week checkpoint — early June</div>
-  <div class="card">
-    <div class="ex-row"><div><div class="ex-name">Lifts progressing session to session</div></div></div>
-    <div class="ex-row"><div><div class="ex-name">HRV stable or improving</div></div></div>
-    <div class="ex-row"><div><div class="ex-name">No joint pain — knees, back, shoulders</div></div></div>
-    <div style="margin-top:10px;font-size:12px;color:#888;">All three yes → add third InShape day in Phase 2.</div>
-  </div>
-</div>
-
-<!-- LOWER -->
-<div id="tab-lower" class="page">
-  <div class="pb" style="background:#0F6E56"><div class="pt">Day A — Lower body</div><div class="pd">Tuesday · InShape Fitness · ~50 min</div></div>
-  <div class="alert alert-info">Hit 3×8 on squats → add 5 lbs next Tuesday. Log every set in Tracker.</div>
-  <div class="section-label">Exercises</div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-p">Primary lift</span><div class="card-title" style="margin-top:5px;">Barbell back squat</div><div class="card-sub">3 × 5–8 reps · 2 min rest</div></div><button class="stgl" onclick="tog('sq',this)">Cues</button></div>
-    <div id="sq" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Setup</div><div class="ex-note">Bar on upper traps, feet shoulder-width, toes slightly out</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Descent</div><div class="ex-note">Sit back and down, chest up, knees track over toes, aim for parallel</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Drive</div><div class="ex-note">Push floor away, drive hips forward, squeeze glutes at top</div></div></div>
-    </div></div>
-  </div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-c">Compound</span><div class="card-title" style="margin-top:5px;">Romanian deadlift</div><div class="card-sub">3 × 8–10 reps · 2 min rest</div></div><button class="stgl" onclick="tog('rdl',this)">Cues</button></div>
-    <div id="rdl" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Hinge</div><div class="ex-note">Push hips back, bar close to legs, feel hamstring stretch</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Return</div><div class="ex-note">Drive hips forward, squeeze glutes at top</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">IT band note</div><div class="ex-note">Any knee discomfort → reduce weight, focus on hip hinge</div></div></div>
-    </div></div>
-  </div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-c">Compound</span><div class="card-title" style="margin-top:5px;">Leg press</div><div class="card-sub">3 × 10–12 reps · 90s rest</div></div><button class="stgl" onclick="tog('lp',this)">Cues</button></div>
-    <div id="lp" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Feet</div><div class="ex-note">Shoulder-width mid-platform · lower = more quad, higher = more glute</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Range</div><div class="ex-note">Lower to ~90 degrees · don't let lower back lift off pad</div></div></div>
-    </div></div>
-  </div>
-  <div class="card"><span class="badge badge-a">Accessory</span><div class="card-title" style="margin-top:5px;">Walking lunges</div><div class="card-sub">2 × 12 each leg · 90s rest · bodyweight or light dumbbells</div></div>
-  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Plank</div><div class="card-sub">3 × 30–45 seconds · 90s rest · Adonis belt goal</div></div>
-  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Cable crunches / Ab wheel rollouts</div><div class="card-sub">3 × 10–12 reps · 90s rest · elbows to knees, abs do the work</div></div>
-  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Hanging knee raises / Leg raises</div><div class="card-sub">3 × 12–15 reps · 90s rest</div></div>
-</div>
-
-<!-- UPPER -->
-<div id="tab-upper" class="page">
-  <div class="pb" style="background:#185FA5"><div class="pt">Day B — Upper body</div><div class="pd">Thursday · InShape Fitness · ~50 min</div></div>
-  <div class="alert alert-info">Hit 3×8 on bench → add 5 lbs next Thursday. Log every set in Tracker.</div>
-  <div class="section-label">Exercises</div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-p">Primary lift</span><div class="card-title" style="margin-top:5px;">Barbell bench press</div><div class="card-sub">3 × 5–8 reps · 2 min rest</div></div><button class="stgl" onclick="tog('bn',this)">Cues</button></div>
-    <div id="bn" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Setup</div><div class="ex-note">Shoulder blades pinched back and down, slight arch, feet flat</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Descent</div><div class="ex-note">Bar to lower chest, elbows at ~45–75 degrees, not flared wide</div></div></div>
-    </div></div>
-  </div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-c">Compound</span><div class="card-title" style="margin-top:5px;">Barbell bent-over row</div><div class="card-sub">3 × 6–8 reps · 2 min rest</div></div><button class="stgl" onclick="tog('rw',this)">Cues</button></div>
-    <div id="rw" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Position</div><div class="ex-note">Hinge to ~45 degrees, core braced</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Pull</div><div class="ex-note">Drive elbows back, squeeze shoulder blades, bar to lower ribcage</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Control</div><div class="ex-note">2 seconds down — no momentum</div></div></div>
-    </div></div>
-  </div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-c">Compound</span><div class="card-title" style="margin-top:5px;">Overhead press</div><div class="card-sub">3 × 8–10 reps · 90s rest</div></div><button class="stgl" onclick="tog('ohp',this)">Cues</button></div>
-    <div id="ohp" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Option</div><div class="ex-note">Barbell or dumbbells — dumbbells better if any shoulder impingement</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Core</div><div class="ex-note">Brace abs — don't hyperextend lower back</div></div></div>
-    </div></div>
-  </div>
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-c">Compound</span><div class="card-title" style="margin-top:5px;">Lat pulldown</div><div class="card-sub">3 × 10–12 reps · 90s rest</div></div><button class="stgl" onclick="tog('lat',this)">Cues</button></div>
-    <div id="lat" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Focus</div><div class="ex-note">Think elbows to back pockets — not pulling with hands</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Range</div><div class="ex-note">Full stretch at top — let shoulder blades rise. Pull to upper chest.</div></div></div>
-    </div></div>
-  </div>
-  <div class="card"><span class="badge badge-a">Accessory</span><div class="card-title" style="margin-top:5px;">DB curl + tricep pushdown (superset)</div><div class="card-sub">2 × 12 each · 90s rest · arms last, do not skip compounds</div></div>
-  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Pallof press</div><div class="card-sub">3 × 10 each side · 90s rest · anti-rotation · cable at chest height</div></div>
-  <div class="card"><span class="badge badge-a">Core</span><div class="card-title" style="margin-top:5px;">Decline weighted sit-up</div><div class="card-sub">3 × 8–10 reps · 90s rest · plate at chest · control the descent</div></div>
-</div>
-
-<!-- WINS -->
-<div id="tab-wins" class="page">
-  <div class="pb"><div class="pt">Your wins</div><div class="pd">Every weight you've moved · automatically tracked</div></div>
-  <div class="section-label">Personal records</div>
-  <div id="prlist">
-    <div class="empty-state">
-      <div class="es-icon">🌱</div>
-      <div>No PRs yet — log your first session.<br>Every weight you lift here becomes a record.</div>
-    </div>
-  </div>
-</div>
-
-<!-- TRACKER -->
-<div id="tab-tracker" class="page">
+<!-- TRACKER (only view) -->
+<div class="page">
   <div class="section-label">Log session</div>
   <div class="card">
     <div style="display:flex;gap:8px;margin-bottom:12px;">
-      <select id="stype" style="flex:1;border:0.5px solid #ddd;border-radius:8px;padding:8px 10px;font-size:13px;" onchange="renderTracker()">
-        <option value="lower">Lower body</option>
-        <option value="upper">Upper body</option>
-      </select>
+      <div class="tracker-daylabel">Full Body</div>
       <input type="date" id="sdate" style="flex:1;border:0.5px solid #ddd;border-radius:8px;padding:8px 10px;font-size:13px;">
     </div>
     <div id="tfields"></div>
     <div class="section-label">
       <div class="notes-label">Overall session note <span class="notes-optional">(optional)</span></div>
     </div>
-    <textarea id="snotes" class="notes-area" placeholder="Overall vibe — energy 1-10, sleep, mood, anything that affected the whole session."></textarea>
+    <textarea id="snotes" class="notes-area" placeholder="Overall vibe — energy 1-10, sleep, protein yesterday, anything that affected the whole session."></textarea>
     <button class="save-btn" id="savebtn" onclick="saveSession()">Save session to Google Sheets</button>
   </div>
   <div class="section-label">Session history</div>
@@ -303,46 +131,40 @@ header { background: #1F3864; color: white; padding: 1rem 1.25rem; display: flex
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6inZ8RaDNrfpFekaHPMz_B7n6Ao0rEuGOOBDUpzbLoAqcTFI39Fa-4io8azEkM191/exec';
 
-// Exercise definitions
-// restSecs: rest timer duration after each set
+// Exercise definitions — 2S Full-Body template
+// restSecs: 120 on heavy compounds (paired, so rest fills productively), 60-90 on lighter work
 // timeBased: true = seconds input instead of reps
-// variants: array of alternative exercise names
-const LOWER = [
-  { id:'squat',    name:'Barbell back squat',              sets:3, target:'5–8',     hasWeight:true,  restSecs:120, timeBased:false,
-    variants:['Barbell back squat','Goblet squat','Hack squat','Bulgarian split squat'] },
-  { id:'rdl',      name:'Romanian deadlift',               sets:3, target:'8–10',    hasWeight:true,  restSecs:120, timeBased:false,
-    variants:['Romanian deadlift','Sumo deadlift','Dumbbell RDL','Trap bar deadlift'] },
-  { id:'lpress',   name:'Leg press',                       sets:3, target:'10–12',   hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Leg press','Hack squat machine','Bulgarian split squat'] },
-  { id:'lunges',   name:'Walking lunges',                  sets:2, target:'12 each', hasWeight:false, restSecs:90,  timeBased:false,
-    variants:['Walking lunges','Reverse lunges','Dumbbell lunges'] },
-  { id:'plank',    name:'Plank',                           sets:3, target:'30–45s',  hasWeight:false, restSecs:90,  timeBased:true,
-    variants:['Plank','RKC plank','Dead bug'] },
-  { id:'crunches', name:'Cable crunches',                  sets:3, target:'10–12',   hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Cable crunches','Ab wheel rollouts','Machine crunch','Hanging crunch'] },
-  { id:'legraise', name:'Hanging knee raises',             sets:3, target:'12–15',   hasWeight:false, restSecs:90,  timeBased:false,
-    variants:['Hanging knee raises','Leg raises','Lying leg raises','Captain\'s chair raises'] },
-];
-const UPPER = [
-  { id:'bench',    name:'Barbell bench press',             sets:3, target:'5–8',     hasWeight:true,  restSecs:120, timeBased:false,
-    variants:['Barbell bench press','Dumbbell bench press','Machine chest press','Cable chest fly'] },
-  { id:'row',      name:'Barbell bent-over row',           sets:3, target:'6–8',     hasWeight:true,  restSecs:120, timeBased:false,
-    variants:['Barbell bent-over row','Seated cable row','Dumbbell row','Machine row','T-bar row'] },
-  { id:'ohp2',     name:'Overhead press',                  sets:3, target:'8–10',    hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Overhead press (barbell)','Dumbbell OHP','Seated barbell OHP','Machine shoulder press','Arnold press'] },
-  { id:'lat2',     name:'Lat pulldown',                    sets:3, target:'10–12',   hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Lat pulldown','Cable pullover','Assisted pull-up','Single-arm cable pulldown'] },
-  { id:'arms',     name:'Curl + pushdown superset',        sets:2, target:'12 each', hasWeight:true,  restSecs:90,  timeBased:false,
+// variants: alternative exercise names (rotate across Mon/Wed/Fri)
+// Order follows the gym floor: own the rack for all four barbell lifts
+// (squat, bench, RDL, OHP), then migrate once to the cable station (row,
+// pulldown), then finish with Block D. Still alternates muscle groups.
+const FULLBODY = [
+  { id:'squat',  name:'Back squat',            sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
+    variants:['Back squat','Leg press','Hack squat','Goblet squat','Bulgarian split squat'] },
+  { id:'hpush',  name:'Barbell bench press',   sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
+    variants:['Barbell bench press','Dumbbell bench press','Machine chest press','Incline DB press'] },
+  { id:'hinge',  name:'Romanian deadlift',     sets:2, target:'8–10',  hasWeight:true,  restSecs:120, timeBased:false,
+    variants:['Romanian deadlift','Dumbbell RDL','Trap bar deadlift','Hip thrust'] },
+  { id:'vpush',  name:'Barbell OHP',           sets:2, target:'8–10',  hasWeight:true,  restSecs:120, timeBased:false,
+    variants:['Barbell OHP','Dumbbell shoulder press','Machine shoulder press','Arnold press'] },
+  { id:'row',    name:'Seated cable row',      sets:2, target:'8–10',  hasWeight:true,  restSecs:90,  timeBased:false,
+    variants:['Seated cable row','Barbell bent-over row','Chest-supported row','Machine row','Dumbbell row'] },
+  { id:'vpull',  name:'Lat pulldown',          sets:2, target:'8–12',  hasWeight:true,  restSecs:90,  timeBased:false,
+    variants:['Lat pulldown','Lat pulldown (neutral)','Assisted pull-up','Cable pullover'] },
+  { id:'lateral',name:'Lateral raise',         sets:2, target:'12–15', hasWeight:true,  restSecs:60,  timeBased:false,
+    variants:['Lateral raise','Cable lateral raise','Machine lateral raise'] },
+  { id:'facepull',name:'Face pull',            sets:2, target:'15–20', hasWeight:true,  restSecs:60,  timeBased:false,
+    variants:['Face pull','Band face pull','Reverse pec deck'] },
+  { id:'arms',   name:'Curl + pushdown superset', sets:2, target:'10–12', hasWeight:true, restSecs:60, timeBased:false,
     variants:['Curl + pushdown superset','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
-  { id:'pallof',    name:'Pallof press',                  sets:3, target:'10 each side', hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Pallof press','Band Pallof press','Cable anti-rotation press'] },
-  { id:'declinestup', name:'Decline weighted sit-up',     sets:3, target:'8–10',     hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Decline weighted sit-up','Decline sit-up','Cable crunch','Weighted crunch'] },
+  { id:'core',   name:'Hanging knee raise',    sets:2, target:'12–15', hasWeight:false, restSecs:60,  timeBased:false,
+    variants:['Hanging knee raise','Captain\'s chair raise','Cable crunch','Ab wheel rollout'] },
 ];
+const SESSION_LABEL = 'Full Body';
 
 // State
 let localHistory = [];
-let lastSessionData = {};
+let lastSessionData = {}; // keyed by exercise/variant NAME
 let restTimer = null;
 let restRemaining = 0;
 let restTotal = 0;
@@ -351,23 +173,9 @@ let sessionTimerInterval = null;
 let warmupCounts = {};
 const activeExTimers = {};
 
-// ── Tab navigation ──────────────────────────────────────────────
-function showTab(name, el) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  el.classList.add('active');
-  if (name === 'tracker') { loadHistory(); renderTracker(); }
-  if (name === 'wins') { loadHistory().then(() => renderPRs()); }
-}
-
-function tog(id, btn) {
-  const el = document.getElementById(id);
-  const open = el.classList.contains('open');
-  el.classList.toggle('open', !open);
-  el.classList.toggle('closed', open);
-  btn.classList.toggle('open', !open);
-  btn.textContent = open ? 'Cues' : 'Hide';
+function restLabel(s) {
+  if (s % 60 === 0) return `${s/60} min rest`;
+  return `${s}s rest`;
 }
 
 // ── Session duration timer ──────────────────────────────────────
@@ -430,56 +238,46 @@ function skipRest() {
 
 // ── Render tracker ──────────────────────────────────────────────
 function renderTracker() {
-  const type = document.getElementById('stype').value;
-  const exs = type === 'lower' ? LOWER : UPPER;
   const c = document.getElementById('tfields');
   c.innerHTML = '';
   warmupCounts = {};
 
-  exs.forEach(ex => {
+  FULLBODY.forEach(ex => {
     warmupCounts[ex.id] = 0;
     const b = document.createElement('div');
     b.className = 'set-block';
     b.id = `block-${ex.id}`;
 
-    // Header
-    const lastKey = `${type}_${ex.id}`;
-    const lastData = lastSessionData[lastKey];
+    const lastData = lastSessionData[ex.name];
     const lastHtml = lastData
       ? `<div class="last-session" id="last-${ex.id}">Last: ${lastData}</div>`
       : `<div class="last-session loading" id="last-${ex.id}">Loading previous...</div>`;
 
-    // Variant select
     let variantHtml = '';
     if (ex.variants && ex.variants.length > 1) {
-      variantHtml = `<select class="ex-variant-select" id="variant-${ex.id}">
-        ${ex.variants.map(v => `<option value="${v}"${v===ex.name?' selected':''}>${v}</option>`).join('')}
+      variantHtml = `<select class="ex-variant-select" id="variant-${ex.id}" onchange="onVariantChange('${ex.id}')">
+        ${ex.variants.map(v => `<option value="${v}"${v===ex.name?' selected':''}>${v===ex.name?'★ '+v+' (anchor)':v}</option>`).join('')}
       </select>`;
     }
 
-    // Quick fill button
-    const quickFillHtml = lastData
-      ? `<button class="quick-fill-btn visible" onclick="quickFill('${ex.id}')" title="Fill with last session weights">↩ Same as last</button>`
+    const quickFillHtml = (lastData && ex.hasWeight)
+      ? `<button class="quick-fill-btn visible" id="qfbtn-${ex.id}" onclick="quickFill('${ex.id}')" title="Fill with last session weights">↩ Same as last</button>`
       : `<button class="quick-fill-btn" id="qfbtn-${ex.id}" onclick="quickFill('${ex.id}')">↩ Same as last</button>`;
 
-    // Working sets
     let setsHtml = `<div id="sets-container-${ex.id}">`;
     for (let i = 1; i <= ex.sets; i++) {
       setsHtml += buildSetRow(ex, i, false);
     }
     setsHtml += '</div>';
 
-    // Add warmup button
     const warmupBtnHtml = `<button class="add-warmup-btn" onclick="addWarmup('${ex.id}')">+ add warm-up set</button>`;
-
-    // Per-exercise note
     const exNoteHtml = `<textarea class="ex-note-input" id="en-${ex.id}" placeholder="Notes on this exercise (optional)" rows="1"></textarea>`;
 
     b.innerHTML = `
       <div class="set-block-header">
         <div>
           <div class="sbt">${ex.name}</div>
-          <div class="sbs">${ex.sets} sets · ${ex.target} · ${ex.restSecs === 120 ? '2 min rest' : '90s rest'}</div>
+          <div class="sbs">${ex.sets} sets · ${ex.target} · ${restLabel(ex.restSecs)}</div>
         </div>
         ${quickFillHtml}
       </div>
@@ -517,9 +315,7 @@ function buildSetRow(ex, setNum, isWarmup) {
 function addWarmup(exId) {
   warmupCounts[exId] = (warmupCounts[exId] || 0) + 1;
   const num = warmupCounts[exId];
-  const type = document.getElementById('stype').value;
-  const exs = type === 'lower' ? LOWER : UPPER;
-  const ex = exs.find(e => e.id === exId);
+  const ex = FULLBODY.find(e => e.id === exId);
   const container = document.getElementById(`sets-container-${exId}`);
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = buildSetRow(ex, num, true);
@@ -538,14 +334,34 @@ function toggleSet(id, i, isWarmup, restSecs) {
   }
 }
 
+// Refresh the "Last:" line + quick-fill for the currently selected variant
+function onVariantChange(exId) {
+  const sel = document.getElementById(`variant-${exId}`);
+  if (!sel) return;
+  const name = sel.value;
+  const last = lastSessionData[name];
+  const el = document.getElementById(`last-${exId}`);
+  const qf = document.getElementById(`qfbtn-${exId}`);
+  const ex = FULLBODY.find(e => e.id === exId);
+  if (last) {
+    el.textContent = `Last: ${last}`;
+    el.classList.remove('loading', 'none');
+    if (qf && ex.hasWeight) qf.classList.add('visible');
+  } else {
+    el.textContent = 'No history for this variant yet';
+    el.classList.remove('loading');
+    el.classList.add('none');
+    if (qf) qf.classList.remove('visible');
+  }
+}
+
 function quickFill(exId) {
-  const type = document.getElementById('stype').value;
-  const exs = type === 'lower' ? LOWER : UPPER;
-  const ex = exs.find(e => e.id === exId);
-  const lastKey = `${type}_${exId}`;
-  const lastData = lastSessionData[lastKey];
-  if (!lastData || !ex.hasWeight) return;
-  // Parse "135lbs×8 / 135lbs×7 / 125lbs×6" format
+  const ex = FULLBODY.find(e => e.id === exId);
+  if (!ex || !ex.hasWeight) return;
+  const sel = document.getElementById(`variant-${exId}`);
+  const name = sel ? sel.value : ex.name;
+  const lastData = lastSessionData[name];
+  if (!lastData) return;
   const parts = lastData.split(' / ');
   parts.forEach((part, idx) => {
     const match = part.match(/(\d+)lbs/);
@@ -559,11 +375,9 @@ function quickFill(exId) {
 // ── Save session ────────────────────────────────────────────────
 async function saveSession() {
   const btn = document.getElementById('savebtn');
-  const type = document.getElementById('stype').value;
   const date = document.getElementById('sdate').value;
   const sessionNote = document.getElementById('snotes').value.trim();
-  const exs = type === 'lower' ? LOWER : UPPER;
-  const label = type === 'lower' ? 'Lower Body' : 'Upper Body';
+  const label = SESSION_LABEL;
   const ts = new Date().toLocaleString();
 
   btn.disabled = true;
@@ -573,16 +387,13 @@ async function saveSession() {
   const rows = [];
   let isFirstRowOfSession = true;
 
-  exs.forEach(ex => {
-    // Get actual exercise name from variant dropdown if present
+  FULLBODY.forEach(ex => {
     const variantEl = document.getElementById(`variant-${ex.id}`);
     const exerciseName = variantEl ? variantEl.value : ex.name;
 
-    // Get exercise note
     const exNoteEl = document.getElementById(`en-${ex.id}`);
     const exNote = exNoteEl ? exNoteEl.value.trim() : '';
 
-    // Warm-up sets first (not counted for progression)
     const wuCount = warmupCounts[ex.id] || 0;
     for (let w = 1; w <= wuCount; w++) {
       const wEl = document.getElementById(`w-${ex.id}-wu-${w}`);
@@ -591,18 +402,14 @@ async function saveSession() {
       rows.push([ts, date, label, exerciseName, 'Warm-up', weight, reps, 'WU', '']);
     }
 
-    // Working sets
     for (let i = 1; i <= ex.sets; i++) {
       const wEl = document.getElementById(`w-${ex.id}-${i}`);
       const weight = wEl ? (wEl.value || 'BW') : 'BW';
       const reps = document.getElementById(`r-${ex.id}-${i}`)?.value || '';
       const done = document.getElementById(`sr-${ex.id}-${i}`)?.classList.contains('done') ? 'Yes' : 'No';
 
-      // Build notes cell
       let noteCell = '';
       if (i === 1) {
-        // Set 1 of this exercise gets the exercise note
-        // First row of entire session also gets session note
         const parts = [];
         if (isFirstRowOfSession && sessionNote) parts.push(`[Session] ${sessionNote}`);
         if (exNote) parts.push(exNote);
@@ -627,8 +434,7 @@ async function saveSession() {
     btn.textContent = 'Saved!';
     btn.style.background = '#1D9E75';
 
-    // Build history entry
-    const liftSummary = exs.map(ex => {
+    const liftSummary = FULLBODY.map(ex => {
       const variantEl = document.getElementById(`variant-${ex.id}`);
       const exName = variantEl ? variantEl.value : ex.name;
       const exNoteEl = document.getElementById(`en-${ex.id}`);
@@ -644,7 +450,7 @@ async function saveSession() {
       return exNote ? `${base} — ${exNote}` : base;
     }).filter(Boolean);
 
-    localHistory.unshift({date, label, lifts: liftSummary, notes: sessionNote});
+    localHistory.unshift({date, label, lifts: liftSummary, sessionNote});
     renderHistory();
     document.getElementById('snotes').value = '';
 
@@ -676,55 +482,31 @@ async function loadHistory() {
       return;
     }
 
-    // Build last session lookup: key = "lower_squat" → "135lbs×8 / 135lbs×7"
     const allRows = rows.slice(1);
-    // Find most recent date per session type + exercise
-    const latestByTypeEx = {};
-    const allLifts = [];
+    const lastByName = {};
+
     allRows.forEach(r => {
-      const sessionType = r[2] === 'Lower Body' ? 'lower' : 'upper';
-      // Map exercise name back to id
-      const allExs = [...LOWER, ...UPPER];
-      const matched = allExs.find(e =>
-        e.variants ? e.variants.includes(r[3]) : e.name === r[3]
-      );
-      if (!matched) return;
-      const key = `${sessionType}_${matched.id}`;
+      if (r[4] === 'Warm-up') return;
+      const name = r[3];
       const date = r[1];
-      if (!latestByTypeEx[key] || date > latestByTypeEx[key].date) {
-        latestByTypeEx[key] = { date, sets: [] };
+      if (!lastByName[name] || date > lastByName[name].date) {
+        lastByName[name] = { date, sets: [] };
       }
-      if (date === latestByTypeEx[key].date && r[4] !== 'Warm-up') {
+      if (date === lastByName[name].date) {
+        const matched = FULLBODY.find(e => (e.variants ? e.variants.includes(name) : e.name === name));
+        const unit = (matched && matched.timeBased) ? 's' : 'lbs';
         const weight = r[5];
         const reps = r[6];
-        const unit = matched.timeBased ? 's' : 'lbs';
-        latestByTypeEx[key].sets.push(`${weight !== 'BW' ? weight+unit : 'BW'}×${reps}`);
-      }
-
-      // For PRs
-      const weight = r[5];
-      if (r[4] !== 'Warm-up' && weight && weight !== 'BW' && !isNaN(parseFloat(weight))) {
-        allLifts.push({ exercise: r[3], weight: parseFloat(weight), reps: parseInt(r[6]) || 0, date: r[1] });
+        lastByName[name].sets.push(`${weight !== 'BW' ? weight+unit : 'BW'}×${reps}`);
       }
     });
-    window._allLifts = allLifts;
 
-    // Populate lastSessionData
-    Object.entries(latestByTypeEx).forEach(([key, val]) => {
-      lastSessionData[key] = val.sets.join(' / ');
+    Object.entries(lastByName).forEach(([name, val]) => {
+      lastSessionData[name] = val.sets.join(' / ');
     });
 
-    // Update any visible last-session labels
-    Object.entries(lastSessionData).forEach(([key, val]) => {
-      const parts = key.split('_');
-      const exId = parts.slice(1).join('_');
-      const el = document.getElementById(`last-${exId}`);
-      if (el) {
-        el.textContent = `Last: ${val}`;
-        el.classList.remove('loading');
-        const qfBtn = document.getElementById(`qfbtn-${exId}`);
-        if (qfBtn) qfBtn.classList.add('visible');
-      }
+    FULLBODY.forEach(ex => {
+      if (document.getElementById(`last-${ex.id}`)) onVariantChange(ex.id);
     });
 
     // Group rows into sessions for history display
@@ -736,7 +518,6 @@ async function loadHistory() {
       const ex = r[3];
       const noteCell = r[8] || '';
 
-      // Parse session note and exercise note
       if (noteCell) {
         const parts = noteCell.split(' | ');
         parts.forEach(part => {
@@ -777,33 +558,12 @@ function renderHistory() {
   el.innerHTML = localHistory.slice(0, 5).map(s => `
     <div class="he">
       <div class="hh">
-        <div class="ht" style="color:${s.label==='Lower Body'?'#0F6E56':'#185FA5'}">${s.label}</div>
+        <div class="ht" style="color:#1F3864">${s.label}</div>
         <div class="hd">${s.date}</div>
       </div>
       <div class="hl">${s.lifts.join('<br>')}</div>
       ${s.sessionNote ? `<div class="hn">${s.sessionNote}</div>` : ''}
     </div>`).join('');
-}
-
-function renderPRs() {
-  const el = document.getElementById('prlist');
-  const lifts = window._allLifts || [];
-  if (!lifts.length) {
-    el.innerHTML = '<div class="empty-state"><div class="es-icon">🌱</div>No PRs yet — log your first session.<br>Every weight you lift here becomes a record.</div>';
-    return;
-  }
-  const prs = {};
-  lifts.forEach(l => {
-    if (!prs[l.exercise] || l.weight > prs[l.exercise].weight) prs[l.exercise] = l;
-  });
-  const sorted = Object.values(prs).sort((a,b) => b.weight - a.weight);
-  el.innerHTML = sorted.map(pr => `
-    <div class="pr-card">
-      <div class="pr-ex">${pr.exercise}</div>
-      <div class="pr-num">${pr.weight} lbs</div>
-      <div class="pr-meta">${pr.reps} reps · ${pr.date}</div>
-    </div>
-  `).join('');
 }
 
 function setSyncStatus(state, text) {
@@ -812,7 +572,7 @@ function setSyncStatus(state, text) {
   el.textContent = text;
 }
 
-// ── Exercise set timer ──────────────────────────────────────────
+// ── Exercise set timer (time-based moves) ───────────────────────
 function toggleExTimer(inputId, btnId) {
   const btn = document.getElementById(btnId);
   const input = document.getElementById(inputId);
@@ -834,8 +594,10 @@ function toggleExTimer(inputId, btnId) {
   }
 }
 
-// Init
+// Init — tracker is the only view, so render + load immediately
 document.getElementById('sdate').valueAsDate = new Date();
+renderTracker();
+loadHistory();
 </script>
 </body>
 </html>
