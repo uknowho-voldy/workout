@@ -37,8 +37,8 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 .day-pill .da { font-size: 13px; font-weight: 500; line-height: 1.3; }
 .day-pill .dnt { font-size: 11px; margin-top: 3px; opacity: 0.75; }
 .pill-otf { background: #FCE7D5; } .pill-otf .dn { color: #8B4513; } .pill-otf .da { color: #5C2E0C; }
-.pill-lower { background: #F4D9D5; } .pill-lower .dn { color: #8B3A3A; } .pill-lower .da { color: #5C2424; }
-.pill-upper { background: #E0D4E8; } .pill-upper .dn { color: #6B4C7C; } .pill-upper .da { color: #432E50; }
+.pill-fbA { background: #F4D9D5; } .pill-fbA .dn { color: #8B3A3A; } .pill-fbA .da { color: #5C2424; }
+.pill-fbB { background: #E0D4E8; } .pill-fbB .dn { color: #6B4C7C; } .pill-fbB .da { color: #432E50; }
 .pill-walk { background: #DDE7DC; } .pill-walk .dn { color: #4F6B58; } .pill-walk .da { color: #324438; }
 .pill-rest { background: #EDE4DC; } .pill-rest .dn { color: #6B5D52; } .pill-rest .da { color: #443B33; }
 .pill-flex { background: #F7E8D8; } .pill-flex .dn { color: #8B6B3A; } .pill-flex .da { color: #5C4520; }
@@ -146,7 +146,7 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 <header>
   <div class="header-left">
     <h1>Hanny — Strong Era</h1>
-    <p>Phase 1 · 12 weeks · building the foundation</p>
+    <p>Phase 2 · 3x strength / week · Full Body A + B</p>
   </div>
   <div class="header-right">
     <div id="sync" class="sync-dot">Sheets ready</div>
@@ -156,8 +156,8 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 
 <div class="tabs">
   <div class="tab active" onclick="showTab('schedule',this)">Schedule</div>
-  <div class="tab" onclick="showTab('lower',this)">Lower</div>
-  <div class="tab" onclick="showTab('upper',this)">Upper</div>
+  <div class="tab" onclick="showTab('fba',this)">Full A</div>
+  <div class="tab" onclick="showTab('fbb',this)">Full B</div>
   <div class="tab" onclick="showTab('tracker',this)">Tracker</div>
   <div class="tab" onclick="showTab('wins',this)">Wins</div>
 </div>
@@ -173,138 +173,136 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 <!-- SCHEDULE -->
 <div id="tab-schedule" class="page active">
   <div class="pb">
-    <div class="pt">Phase 1 — Foundation</div>
-    <div class="pd">12 weeks · OTF 3x + Strength 2x</div>
-    <div class="pq">Form first. Weight second. Showing up is the win.</div>
+    <div class="pt">Phase 2 — Consistency</div>
+    <div class="pd">Aug 3 onward · InShape 3x + OTF 2x</div>
+    <div class="pq">Frequency beats intensity. Showing up is still the win.</div>
   </div>
   <div class="section-label">This week</div>
   <div class="week-grid">
-    <div class="day-pill pill-otf"><div class="dn">Monday</div><div class="da">OTF 3G60</div><div class="dnt">Cardio · keep what's working</div></div>
-    <div class="day-pill pill-lower"><div class="dn">Tuesday</div><div class="da">InShape — Lower</div><div class="dnt">5am · ~45 min · the real driver</div></div>
-    <div class="day-pill pill-otf"><div class="dn">Wednesday</div><div class="da">OTF 3G60</div><div class="dnt">Cardio</div></div>
-    <div class="day-pill pill-upper"><div class="dn">Thursday</div><div class="da">InShape — Upper</div><div class="dnt">5am · ~45 min · the real driver</div></div>
-    <div class="day-pill pill-walk"><div class="dn">Friday</div><div class="da">Rest or walk</div><div class="dnt">30–45 min Zone 2 only if feeling good</div></div>
-    <div class="day-pill pill-flex"><div class="dn">Saturday</div><div class="da">OTF or long walk</div><div class="dnt">Optional · skip if tired</div></div>
+    <div class="day-pill pill-fbA"><div class="dn">Monday</div><div class="da">InShape — Full A</div><div class="dnt">Strength · with Vikram</div></div>
+    <div class="day-pill pill-otf"><div class="dn">Tuesday</div><div class="da">OTF 3G60</div><div class="dnt">Cardio</div></div>
+    <div class="day-pill pill-fbB"><div class="dn">Wednesday</div><div class="da">InShape — Full B</div><div class="dnt">Strength · with Vikram</div></div>
+    <div class="day-pill pill-otf"><div class="dn">Thursday</div><div class="da">OTF 3G60</div><div class="dnt">Cardio</div></div>
+    <div class="day-pill pill-fbA"><div class="dn">Friday</div><div class="da">InShape — Full A (lighter)</div><div class="dnt">Rotate A/B next week · ease going into weekend</div></div>
+    <div class="day-pill pill-flex"><div class="dn">Saturday</div><div class="da">Optional: Tread 50</div><div class="dnt">Or walk · or rest · not a target</div></div>
     <div class="day-pill pill-rest" style="grid-column:1/-1"><div class="dn">Sunday</div><div class="da">Full rest — non-negotiable</div></div>
   </div>
-  <div class="alert alert-soft">Strength days are the priority. If something has to give in a week, it's an OTF, not a strength day.</div>
+  <div class="alert alert-soft"><strong>How it rotates:</strong> Week 1 = A/B/A. Week 2 = B/A/B. Just alternate. Each version hits the whole body — miss a day and you still trained everything.</div>
 
-  <div class="section-label">First 2 weeks</div>
+  <div class="section-label">Friday is different</div>
   <div class="card">
-    <div class="card-title">Form over load</div>
-    <div class="card-sub" style="margin-top:6px;line-height:1.6;">Weights stay deliberately light. The goal is learning the movement, not progressing the weight. If a set feels "easy," that's correct. Real progression starts week 3.</div>
+    <div class="card-title">Friday = easier day</div>
+    <div class="card-sub" style="margin-top:6px;line-height:1.6;">Drop weights ~10–15% on Friday. Do 2 sets instead of 3 if tired. The point is to keep the streak, not to grind. Monday and Wednesday are the priority sessions.</div>
   </div>
 
-  <div class="section-label">The progression rule</div>
+  <div class="section-label">Progression rule</div>
   <div class="card">
     <div class="card-title">When to add weight</div>
-    <div class="card-sub" style="margin-top:6px;line-height:1.6;">Hit the top of the rep range on <strong>all sets</strong>, with <strong>1–2 reps still in the tank</strong> on the last set → add weight next session. Last rep should feel hard but doable. Not grinding. Not losing form.</div>
+    <div class="card-sub" style="margin-top:6px;line-height:1.6;">Hit the top of the rep range on <strong>all working sets</strong> on Mon <em>and</em> Wed, with <strong>1–2 reps in the tank</strong> on the last set → add weight next same-letter session. Small increments: 5 lbs DB / machine, 10 lbs hip thrust.</div>
   </div>
 
-  <div class="section-label">Week 4 check-in</div>
+  <div class="section-label">Next check-in</div>
   <div class="card">
-    <div class="ex-row"><div><div class="ex-name">Body feels okay — no nagging pain</div></div></div>
-    <div class="ex-row"><div><div class="ex-name">Lifts are moving up</div></div></div>
-    <div class="ex-row"><div><div class="ex-name">Sleep is holding up at 5am wake</div></div></div>
-    <div class="ex-row"><div><div class="ex-name">Habit is sticking</div></div></div>
+    <div class="ex-row"><div><div class="ex-name">3 sessions/week actually happening</div></div></div>
+    <div class="ex-row"><div><div class="ex-name">Lifts moving up on primary movements</div></div></div>
+    <div class="ex-row"><div><div class="ex-name">No new pain — knees, back, shoulders</div></div></div>
+    <div class="ex-row"><div><div class="ex-name">Sleep + recovery holding up</div></div></div>
   </div>
 </div>
 
-<!-- LOWER -->
-<div id="tab-lower" class="page">
+<!-- FULL BODY A -->
+<div id="tab-fba" class="page">
   <div class="pb" style="background:linear-gradient(135deg,#8B3A3A 0%,#B85C5C 100%);">
-    <div class="pt">Tuesday — Lower</div>
-    <div class="pd">InShape · ~45 min · 5am</div>
-    <div class="pq">Glutes are the highest-ROI muscle. Build them.</div>
+    <div class="pt">Full Body A</div>
+    <div class="pd">InShape · ~45 min · Mon and Fri (this week)</div>
+    <div class="pq">Squat, push, pull, glutes, arms, core. Whole body every session.</div>
   </div>
-  <div class="alert alert-soft">Hit the top of the rep range on all sets with reps left in the tank? Add weight next Tuesday.</div>
+  <div class="alert alert-soft">Hit the top rep range on all sets with reps left in the tank on Mon AND Wed? Add weight next A session.</div>
   <div class="section-label">Exercises</div>
 
   <div class="card">
-    <div class="sh"><div><span class="badge badge-main">Squat pattern</span><div class="card-title" style="margin-top:5px;">Goblet squat (DB)</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('gs',this)">Cues</button></div>
-    <div id="gs" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Hold</div><div class="ex-note">DB at chest, both hands cupping under the top — like holding a goblet</div></div></div>
+    <div class="sh"><div><span class="badge badge-main">Squat</span><div class="card-title" style="margin-top:5px;">Goblet squat (DB)</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('a-gs',this)">Cues</button></div>
+    <div id="a-gs" class="coll closed"><div style="padding-top:8px">
+      <div class="ex-row"><div><div class="ex-name">Hold</div><div class="ex-note">DB at chest, both hands cupping under the top</div></div></div>
       <div class="ex-row"><div><div class="ex-name">Feet</div><div class="ex-note">Shoulder-width, toes slightly out</div></div></div>
       <div class="ex-row"><div><div class="ex-name">Descent</div><div class="ex-note">Sit down between heels, chest up, elbows brush inner thighs at the bottom</div></div></div>
     </div></div>
   </div>
 
   <div class="card">
-    <div class="sh"><div><span class="badge badge-comp">Hinge pattern</span><div class="card-title" style="margin-top:5px;">DB Romanian deadlift</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('drdl',this)">Cues</button></div>
-    <div id="drdl" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Hold</div><div class="ex-note">DBs in front of thighs, palms facing in</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Hinge</div><div class="ex-note">Push hips back like closing a door behind you · slight knee bend, not a squat</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Feel</div><div class="ex-note">Stretch in the back of the legs. If you feel it in your lower back, hinge more.</div></div></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-comp">Quad work</span><div class="card-title" style="margin-top:5px;">Leg press</div><div class="card-sub">3 × 10–12 · 90 sec rest</div></div><button class="stgl" onclick="tog('hlp',this)">Cues</button></div>
-    <div id="hlp" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Feet</div><div class="ex-note">Shoulder-width, mid-platform · don't lock knees at the top</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Range</div><div class="ex-note">Lower to ~90 degrees · keep lower back pressed into the pad</div></div></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-main">Money lift</span><div class="card-title" style="margin-top:5px;">Hip thrust</div><div class="card-sub">3 × 10–12 · 60 sec rest</div></div><button class="stgl" onclick="tog('ht',this)">Cues</button></div>
-    <div id="ht" class="coll closed"><div style="padding-top:8px">
-      <div class="ex-row"><div><div class="ex-name">Setup</div><div class="ex-note">Upper back on bench, feet planted, barbell or DB across hips (use a pad)</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Drive</div><div class="ex-note">Squeeze glutes hard at the top · body in a straight line from knees to shoulders</div></div></div>
-      <div class="ex-row"><div><div class="ex-name">Why this matters</div><div class="ex-note">This is THE exercise for shape, knees, and future back health. Don't skip.</div></div></div>
-    </div></div>
-  </div>
-
-  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Plank</div><div class="card-sub">2 × 20–40 sec hold · 60 sec rest</div></div>
-  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Dead bug</div><div class="card-sub">2 × 8 each side · slow and controlled</div></div>
-</div>
-
-<!-- UPPER -->
-<div id="tab-upper" class="page">
-  <div class="pb" style="background:linear-gradient(135deg,#6B4C7C 0%,#9B7BAA 100%);">
-    <div class="pt">Thursday — Upper</div>
-    <div class="pd">InShape · ~45 min · 5am</div>
-    <div class="pq">Arms and back. Where shape changes show up first.</div>
-  </div>
-  <div class="alert alert-soft">Hit the top of the rep range on all sets with reps left in the tank? Add weight next Thursday.</div>
-  <div class="section-label">Exercises</div>
-
-  <div class="card">
-    <div class="sh"><div><span class="badge badge-main">Push</span><div class="card-title" style="margin-top:5px;">Chest press machine</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('cp',this)">Cues</button></div>
-    <div id="cp" class="coll closed"><div style="padding-top:8px">
+    <div class="sh"><div><span class="badge badge-comp">Push</span><div class="card-title" style="margin-top:5px;">Chest press machine</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('a-cp',this)">Cues</button></div>
+    <div id="a-cp" class="coll closed"><div style="padding-top:8px">
       <div class="ex-row"><div><div class="ex-name">Seat</div><div class="ex-note">Adjust so the handles line up with mid-chest</div></div></div>
       <div class="ex-row"><div><div class="ex-name">Push</div><div class="ex-note">Press out smoothly · don't lock elbows hard at the end</div></div></div>
     </div></div>
   </div>
 
   <div class="card">
-    <div class="sh"><div><span class="badge badge-comp">Pull</span><div class="card-title" style="margin-top:5px;">Seated cable row</div><div class="card-sub">3 × 10–12 · 90 sec rest</div></div><button class="stgl" onclick="tog('scr',this)">Cues</button></div>
-    <div id="scr" class="coll closed"><div style="padding-top:8px">
+    <div class="sh"><div><span class="badge badge-comp">Pull</span><div class="card-title" style="margin-top:5px;">Seated cable row</div><div class="card-sub">3 × 10–12 · 90 sec rest</div></div><button class="stgl" onclick="tog('a-scr',this)">Cues</button></div>
+    <div id="a-scr" class="coll closed"><div style="padding-top:8px">
       <div class="ex-row"><div><div class="ex-name">Pull</div><div class="ex-note">Elbows drive back · squeeze shoulder blades together at the end</div></div></div>
       <div class="ex-row"><div><div class="ex-name">Posture</div><div class="ex-note">Tall chest, don't round forward when extending out</div></div></div>
     </div></div>
   </div>
 
   <div class="card">
-    <div class="sh"><div><span class="badge badge-comp">Shoulders</span><div class="card-title" style="margin-top:5px;">Seated DB shoulder press</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('sdp',this)">Cues</button></div>
-    <div id="sdp" class="coll closed"><div style="padding-top:8px">
+    <div class="sh"><div><span class="badge badge-main">Glutes</span><div class="card-title" style="margin-top:5px;">Hip thrust</div><div class="card-sub">3 × 10–12 · 60 sec rest</div></div><button class="stgl" onclick="tog('a-ht',this)">Cues</button></div>
+    <div id="a-ht" class="coll closed"><div style="padding-top:8px">
+      <div class="ex-row"><div><div class="ex-name">Setup</div><div class="ex-note">Upper back on bench, feet planted, barbell or DB across hips (use a pad)</div></div></div>
+      <div class="ex-row"><div><div class="ex-name">Drive</div><div class="ex-note">Squeeze glutes hard at the top · body in a straight line from knees to shoulders</div></div></div>
+      <div class="ex-row"><div><div class="ex-name">Why this matters</div><div class="ex-note">THE exercise for shape, knees, and back health. Don't skip.</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="card"><span class="badge badge-acc">Arms (superset)</span><div class="card-title" style="margin-top:5px;">DB curl + tricep pushdown</div><div class="card-sub">2 × 12 each · 60 sec rest after the pair</div></div>
+  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Plank</div><div class="card-sub">2 × 20–40 sec hold · 60 sec rest</div></div>
+</div>
+
+<!-- FULL BODY B -->
+<div id="tab-fbb" class="page">
+  <div class="pb" style="background:linear-gradient(135deg,#6B4C7C 0%,#9B7BAA 100%);">
+    <div class="pt">Full Body B</div>
+    <div class="pd">InShape · ~45 min · Wed (this week)</div>
+    <div class="pq">Hinge, press, pull, kickback, core. Different movements, same whole body.</div>
+  </div>
+  <div class="alert alert-soft">Hit the top rep range on all sets with reps left in the tank on this session AND the last B? Add weight next B session.</div>
+  <div class="section-label">Exercises</div>
+
+  <div class="card">
+    <div class="sh"><div><span class="badge badge-main">Quads</span><div class="card-title" style="margin-top:5px;">Leg press</div><div class="card-sub">3 × 10–12 · 90 sec rest</div></div><button class="stgl" onclick="tog('b-lp',this)">Cues</button></div>
+    <div id="b-lp" class="coll closed"><div style="padding-top:8px">
+      <div class="ex-row"><div><div class="ex-name">Feet</div><div class="ex-note">Shoulder-width, mid-platform · don't lock knees at the top</div></div></div>
+      <div class="ex-row"><div><div class="ex-name">Range</div><div class="ex-note">Lower to ~90 degrees · keep lower back pressed into the pad</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="sh"><div><span class="badge badge-comp">Shoulders</span><div class="card-title" style="margin-top:5px;">Seated DB shoulder press</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('b-sdp',this)">Cues</button></div>
+    <div id="b-sdp" class="coll closed"><div style="padding-top:8px">
       <div class="ex-row"><div><div class="ex-name">Start</div><div class="ex-note">DBs at shoulder height, elbows slightly forward of body</div></div></div>
       <div class="ex-row"><div><div class="ex-name">Press</div><div class="ex-note">Push up and slightly together · don't arch lower back</div></div></div>
     </div></div>
   </div>
 
   <div class="card">
-    <div class="sh"><div><span class="badge badge-comp">Back width</span><div class="card-title" style="margin-top:5px;">Lat pulldown</div><div class="card-sub">3 × 10–12 · 90 sec rest</div></div><button class="stgl" onclick="tog('lpd',this)">Cues</button></div>
-    <div id="lpd" class="coll closed"><div style="padding-top:8px">
+    <div class="sh"><div><span class="badge badge-comp">Pull</span><div class="card-title" style="margin-top:5px;">Lat pulldown</div><div class="card-sub">3 × 10–12 · 90 sec rest</div></div><button class="stgl" onclick="tog('b-lpd',this)">Cues</button></div>
+    <div id="b-lpd" class="coll closed"><div style="padding-top:8px">
       <div class="ex-row"><div><div class="ex-name">Cue</div><div class="ex-note">Think elbows to back pockets · not pulling with hands</div></div></div>
       <div class="ex-row"><div><div class="ex-name">Range</div><div class="ex-note">Bar to upper chest · full stretch at the top</div></div></div>
     </div></div>
   </div>
 
-  <div class="card"><span class="badge badge-acc">Arms (superset)</span><div class="card-title" style="margin-top:5px;">DB curl + tricep pushdown</div><div class="card-sub">2 × 12 each · 60 sec rest after the pair</div></div>
-  <div class="card"><span class="badge badge-main">Glute bonus</span><div class="card-title" style="margin-top:5px;">Hip thrust or glute kickback machine</div><div class="card-sub">2 × 12 · extra glute volume on upper day</div></div>
-  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Pallof press</div><div class="card-sub">3 × 10 each side · 60 sec rest · light cable · anti-rotation</div></div>
-  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Side plank</div><div class="card-sub">2 × 20–30 sec each side · 60 sec rest · brace and breathe</div></div>
+  <div class="card">
+    <div class="sh"><div><span class="badge badge-main">Hinge</span><div class="card-title" style="margin-top:5px;">DB Romanian deadlift</div><div class="card-sub">3 × 8–10 · 90 sec rest</div></div><button class="stgl" onclick="tog('b-drdl',this)">Cues</button></div>
+    <div id="b-drdl" class="coll closed"><div style="padding-top:8px">
+      <div class="ex-row"><div><div class="ex-name">Hold</div><div class="ex-note">DBs in front of thighs, palms facing in</div></div></div>
+      <div class="ex-row"><div><div class="ex-name">Hinge</div><div class="ex-note">Push hips back like closing a door · slight knee bend, not a squat</div></div></div>
+      <div class="ex-row"><div><div class="ex-name">Feel</div><div class="ex-note">Stretch in the back of the legs. If you feel it in your lower back, hinge more.</div></div></div>
+    </div></div>
+  </div>
+
+  <div class="card"><span class="badge badge-main">Glutes</span><div class="card-title" style="margin-top:5px;">Glute kickback machine</div><div class="card-sub">2 × 12 each side · 60 sec rest</div></div>
+  <div class="card"><span class="badge badge-acc">Core</span><div class="card-title" style="margin-top:5px;">Dead bug</div><div class="card-sub">2 × 8 each side · slow and controlled</div></div>
 </div>
 
 <!-- TRACKER -->
@@ -313,8 +311,8 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
   <div class="card">
     <div style="display:flex;gap:8px;margin-bottom:12px;">
       <select id="stype" style="flex:1;border:0.5px solid #DDD0C5;border-radius:10px;padding:8px 10px;font-size:13px;background:white;color:#2A1F1A;" onchange="renderTracker()">
-        <option value="lower">Lower Body</option>
-        <option value="upper">Upper Body</option>
+        <option value="fba">Full Body A</option>
+        <option value="fbb">Full Body B</option>
       </select>
       <input type="date" id="sdate" style="flex:1;border:0.5px solid #DDD0C5;border-radius:10px;padding:8px 10px;font-size:13px;background:white;color:#2A1F1A;">
     </div>
@@ -348,41 +346,36 @@ header { background: linear-gradient(135deg, #B85C5C 0%, #C97B6B 100%); color: w
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSM86StFzwTYBlrqVeS8WNGxep7uXV6OTG_kMSYafEbsmy0tnEvkQdzao6Vtcfmjrt/exec';
 
-// Exercise definitions
-// restSecs: rest timer duration after each set
-// timeBased: true = seconds input instead of reps (for plank etc)
-// variants: alternative exercise names (knee-friendly, beginner-appropriate)
-const LOWER = [
-  { id:'gsquat',    name:'Goblet squat (DB)',     sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
+// Full Body A: squat, push, pull, glutes, arms, core
+const FBA = [
+  { id:'gsquat',    name:'Goblet squat (DB)',       sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
     variants:['Goblet squat (DB)','Leg press','Hack squat machine','DB front squat'] },
-  { id:'drdl',      name:'DB Romanian deadlift',  sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
-    variants:['DB Romanian deadlift','Cable RDL','45° back extension','Single-leg DB RDL'] },
-  { id:'lpress',    name:'Leg press',             sets:3, target:'10–12',   hasWeight:true,  restSecs:90, timeBased:false,
-    variants:['Leg press','Hack squat machine','Smith squat','DB front squat'] },
-  { id:'hipthrust', name:'Hip thrust',            sets:3, target:'10–12',   hasWeight:true,  restSecs:60, timeBased:false,
-    variants:['Hip thrust (barbell)','Hip thrust (machine)','Glute kickback machine','Single-leg hip thrust'] },
-  { id:'plank',     name:'Plank',                 sets:2, target:'20–40s',  hasWeight:false, restSecs:60, timeBased:true,
-    variants:['Plank','RKC plank','Dead bug','Bird dog'] },
-  { id:'deadbug',   name:'Dead bug',              sets:2, target:'8 each',  hasWeight:false, restSecs:60, timeBased:false,
-    variants:['Dead bug','Bird dog','Pallof press','Plank'] },
-];
-const UPPER = [
-  { id:'cpress',    name:'Chest press machine',           sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
+  { id:'cpress',    name:'Chest press machine',     sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
     variants:['Chest press machine','Incline chest press machine','DB bench press','Cable chest fly'] },
-  { id:'crow',      name:'Seated cable row',              sets:3, target:'10–12',   hasWeight:true,  restSecs:90, timeBased:false,
+  { id:'crow',      name:'Seated cable row',        sets:3, target:'10–12',   hasWeight:true,  restSecs:90, timeBased:false,
     variants:['Seated cable row','Machine row','DB row','Chest-supported row'] },
-  { id:'shoulder',  name:'Seated DB shoulder press',      sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
-    variants:['Seated DB shoulder press','Machine shoulder press','Standing DB press','Arnold press'] },
-  { id:'lpull',     name:'Lat pulldown',                  sets:3, target:'10–12',   hasWeight:true,  restSecs:90, timeBased:false,
-    variants:['Lat pulldown','Wide-grip lat pulldown','Assisted pull-up','Cable pullover'] },
-  { id:'armss',     name:'DB curl + tricep pushdown',     sets:2, target:'12 each', hasWeight:true,  restSecs:60, timeBased:false,
+  { id:'hipthrust', name:'Hip thrust',              sets:3, target:'10–12',   hasWeight:true,  restSecs:60, timeBased:false,
+    variants:['Hip thrust (barbell)','Hip thrust (machine)','Glute kickback machine','Single-leg hip thrust'] },
+  { id:'armss',     name:'DB curl + tricep pushdown', sets:2, target:'12 each', hasWeight:true, restSecs:60, timeBased:false,
     variants:['DB curl + tricep pushdown','Hammer curl + rope pushdown','Preacher curl + overhead extension'] },
-  { id:'glutes',    name:'Hip thrust or glute kickback',  sets:2, target:'12',      hasWeight:true,  restSecs:60, timeBased:false,
-    variants:['Glute kickback machine','Hip thrust','Cable kickback','Single-leg glute bridge'] },
-  { id:'pallof',    name:'Pallof press',                 sets:3, target:'10 each side', hasWeight:true,  restSecs:60, timeBased:false,
-    variants:['Pallof press','Band Pallof press','Cable anti-rotation'] },
-  { id:'sideplank', name:'Side plank',                   sets:2, target:'20–30s each',  hasWeight:false, restSecs:60, timeBased:true,
-    variants:['Side plank','Copenhagen plank','Plank with reach'] },
+  { id:'plank',     name:'Plank',                   sets:2, target:'20–40s',  hasWeight:false, restSecs:60, timeBased:true,
+    variants:['Plank','RKC plank','Side plank','Bird dog'] },
+];
+
+// Full Body B: hinge, press, pull, kickback, core
+const FBB = [
+  { id:'lpress',    name:'Leg press',               sets:3, target:'10–12',   hasWeight:true,  restSecs:90, timeBased:false,
+    variants:['Leg press','Hack squat machine','Smith squat','DB front squat'] },
+  { id:'shoulder',  name:'Seated DB shoulder press', sets:3, target:'8–10',   hasWeight:true, restSecs:90, timeBased:false,
+    variants:['Seated DB shoulder press','Machine shoulder press','Standing DB press','Arnold press'] },
+  { id:'lpull',     name:'Lat pulldown',            sets:3, target:'10–12',   hasWeight:true,  restSecs:90, timeBased:false,
+    variants:['Lat pulldown','Wide-grip lat pulldown','Assisted pull-up','Cable pullover'] },
+  { id:'drdl',      name:'DB Romanian deadlift',    sets:3, target:'8–10',    hasWeight:true,  restSecs:90, timeBased:false,
+    variants:['DB Romanian deadlift','Cable RDL','45° back extension','Single-leg DB RDL'] },
+  { id:'kickback',  name:'Glute kickback machine',  sets:2, target:'12 each', hasWeight:true,  restSecs:60, timeBased:false,
+    variants:['Glute kickback machine','Cable kickback','Single-leg glute bridge','Hip thrust'] },
+  { id:'deadbug',   name:'Dead bug',                sets:2, target:'8 each',  hasWeight:false, restSecs:60, timeBased:false,
+    variants:['Dead bug','Bird dog','Pallof press','Plank'] },
 ];
 
 // State
@@ -498,7 +491,7 @@ function toggleExTimer(inputId, btnId) {
 // ── Render tracker ──────────────────────────────────────────────
 function renderTracker() {
   const type = document.getElementById('stype').value;
-  const exs = type === 'lower' ? LOWER : UPPER;
+  const exs = type === 'fba' ? FBA : FBB;
   const c = document.getElementById('tfields');
   c.innerHTML = '';
   warmupCounts = {};
@@ -580,7 +573,7 @@ function addWarmup(exId) {
   warmupCounts[exId] = (warmupCounts[exId] || 0) + 1;
   const num = warmupCounts[exId];
   const type = document.getElementById('stype').value;
-  const exs = type === 'lower' ? LOWER : UPPER;
+  const exs = type === 'fba' ? FBA : FBB;
   const ex = exs.find(e => e.id === exId);
   const container = document.getElementById(`sets-container-${exId}`);
   const tempDiv = document.createElement('div');
@@ -602,7 +595,7 @@ function toggleSet(id, i, isWarmup, restSecs) {
 
 function quickFill(exId) {
   const type = document.getElementById('stype').value;
-  const exs = type === 'lower' ? LOWER : UPPER;
+  const exs = type === 'fba' ? FBA : FBB;
   const ex = exs.find(e => e.id === exId);
   const lastKey = `${type}_${exId}`;
   const lastData = lastSessionData[lastKey];
@@ -623,8 +616,8 @@ async function saveSession() {
   const type = document.getElementById('stype').value;
   const date = document.getElementById('sdate').value;
   const sessionNote = document.getElementById('snotes').value.trim();
-  const exs = type === 'lower' ? LOWER : UPPER;
-  const label = type === 'lower' ? 'Lower Body' : 'Upper Body';
+  const exs = type === 'fba' ? FBA : FBB;
+  const label = type === 'fba' ? 'Full Body A' : 'Full Body B';
   const ts = new Date().toLocaleString();
 
   btn.disabled = true;
@@ -640,7 +633,6 @@ async function saveSession() {
     const exNoteEl = document.getElementById(`en-${ex.id}`);
     const exNote = exNoteEl ? exNoteEl.value.trim() : '';
 
-    // Warm-up sets first
     const wuCount = warmupCounts[ex.id] || 0;
     for (let w = 1; w <= wuCount; w++) {
       const wEl = document.getElementById(`w-${ex.id}-wu-${w}`);
@@ -649,7 +641,6 @@ async function saveSession() {
       rows.push([ts, date, label, exerciseName, 'Warm-up', weight, reps, 'WU', '']);
     }
 
-    // Working sets
     for (let i = 1; i <= ex.sets; i++) {
       const wEl = document.getElementById(`w-${ex.id}-${i}`);
       const weight = wEl ? (wEl.value || 'BW') : 'BW';
@@ -735,13 +726,26 @@ async function loadHistory() {
     const allLifts = [];
 
     allRows.forEach(r => {
-      const sessionType = r[2] === 'Lower Body' ? 'lower' : 'upper';
-      const allExs = [...LOWER, ...UPPER];
+      // Map old + new session labels to type key
+      let sessionType = null;
+      if (r[2] === 'Full Body A') sessionType = 'fba';
+      else if (r[2] === 'Full Body B') sessionType = 'fbb';
+      else if (r[2] === 'Lower Body') sessionType = 'fba'; // legacy — treat lower-day exercises as A for matching
+      else if (r[2] === 'Upper Body') sessionType = 'fbb'; // legacy
+      if (!sessionType) return;
+
+      const allExs = [...FBA, ...FBB];
       const matched = allExs.find(e =>
         e.variants ? e.variants.includes(r[3]) : e.name === r[3]
       );
       if (!matched) return;
-      const key = `${sessionType}_${matched.id}`;
+
+      // Figure out which set this exercise actually belongs to now (A or B)
+      const inA = FBA.some(e => e.id === matched.id);
+      const inB = FBB.some(e => e.id === matched.id);
+      const belongsTo = inA ? 'fba' : (inB ? 'fbb' : sessionType);
+
+      const key = `${belongsTo}_${matched.id}`;
       const date = r[1];
       if (!latestByTypeEx[key] || date > latestByTypeEx[key].date) {
         latestByTypeEx[key] = { date, sets: [] };
@@ -753,7 +757,6 @@ async function loadHistory() {
         latestByTypeEx[key].sets.push(`${weight !== 'BW' ? weight+unit : 'BW'}×${reps}`);
       }
 
-      // For PRs
       const weight = r[5];
       if (r[4] !== 'Warm-up' && weight && weight !== 'BW' && !isNaN(parseFloat(weight))) {
         allLifts.push({ exercise: r[3], weight: parseFloat(weight), reps: parseInt(r[6]) || 0, date: r[1] });
@@ -778,7 +781,6 @@ async function loadHistory() {
 
     window._allLifts = allLifts;
 
-    // Group rows into sessions for history display
     const grouped = {};
     allRows.forEach(r => {
       if (r[4] === 'Warm-up') return;
@@ -824,15 +826,20 @@ function renderHistory() {
     el.innerHTML = '<div class="empty-state"><div class="es-icon">💪</div>Your first session is the hardest.<br>Log it and the rest gets easier.</div>';
     return;
   }
-  el.innerHTML = localHistory.slice(0, 5).map(s => `
+  el.innerHTML = localHistory.slice(0, 5).map(s => {
+    let labelColor = '#6B5D52';
+    if (s.label === 'Full Body A' || s.label === 'Lower Body') labelColor = '#B85C5C';
+    if (s.label === 'Full Body B' || s.label === 'Upper Body') labelColor = '#6B4C7C';
+    return `
     <div class="he">
       <div class="hh">
-        <div class="ht" style="color:${s.label==='Lower Body'?'#B85C5C':'#6B4C7C'}">${s.label}</div>
+        <div class="ht" style="color:${labelColor}">${s.label}</div>
         <div class="hd">${s.date}</div>
       </div>
       <div class="hl">${s.lifts.join('<br>')}</div>
       ${s.sessionNote ? `<div class="hn">${s.sessionNote}</div>` : ''}
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function renderPRs() {
