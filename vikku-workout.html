@@ -135,16 +135,16 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6inZ8RaDNrfpFekaHP
 // restSecs: 120 on heavy compounds (paired, so rest fills productively), 60-90 on lighter work
 // timeBased: true = seconds input instead of reps
 // variants: alternative exercise names (rotate across Mon/Wed/Fri)
-// Order follows the gym floor: own the rack for all four barbell lifts
-// (squat, bench, RDL, OHP), then migrate once to the cable station (row,
-// pulldown), then finish with Block D. Still alternates muscle groups.
+// Order follows the gym floor: squat and RDL back-to-back at the barbell,
+// then bench and OHP, then migrate once to the cable station (row, pulldown),
+// then Block D, and finish with a core / lower-back stability move.
 const FULLBODY = [
   { id:'squat',  name:'Back squat',            sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
     variants:['Back squat','Leg press','Hack squat','Goblet squat','Bulgarian split squat'] },
-  { id:'hpush',  name:'Barbell bench press',   sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
-    variants:['Barbell bench press','Dumbbell bench press','Machine chest press','Incline DB press'] },
   { id:'hinge',  name:'Romanian deadlift',     sets:2, target:'8–10',  hasWeight:true,  restSecs:120, timeBased:false,
     variants:['Romanian deadlift','Dumbbell RDL','Trap bar deadlift','Hip thrust'] },
+  { id:'hpush',  name:'Barbell bench press',   sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
+    variants:['Barbell bench press','Dumbbell bench press','Machine chest press','Incline DB press'] },
   { id:'vpush',  name:'Barbell OHP',           sets:2, target:'8–10',  hasWeight:true,  restSecs:120, timeBased:false,
     variants:['Barbell OHP','Dumbbell shoulder press','Machine shoulder press','Arnold press'] },
   { id:'row',    name:'Seated cable row',      sets:2, target:'8–10',  hasWeight:true,  restSecs:90,  timeBased:false,
@@ -157,8 +157,8 @@ const FULLBODY = [
     variants:['Face pull','Band face pull','Reverse pec deck'] },
   { id:'arms',   name:'Curl + pushdown superset', sets:2, target:'10–12', hasWeight:true, restSecs:60, timeBased:false,
     variants:['Curl + pushdown superset','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
-  { id:'core',   name:'Hanging knee raise',    sets:2, target:'12–15', hasWeight:false, restSecs:60,  timeBased:false,
-    variants:['Hanging knee raise','Captain\'s chair raise','Cable crunch','Ab wheel rollout'] },
+  { id:'core',   name:'Pallof press',          sets:2, target:'10–12/side', hasWeight:true, restSecs:60, timeBased:false,
+    variants:['Pallof press','Suitcase carry','Dead bug','Back extension','Hanging knee raise','Ab wheel rollout'] },
 ];
 const SESSION_LABEL = 'Full Body';
 
