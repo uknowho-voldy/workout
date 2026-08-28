@@ -138,6 +138,12 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6inZ8RaDNrfpFekaHP
 // Order follows the gym floor: squat and RDL back-to-back at the barbell,
 // then bench and OHP, then migrate once to the cable station (row, pulldown),
 // then Block D, and finish with a core / lower-back stability move.
+//
+// MACHINE VARIANTS: the Precor Dual Adjustable Pulley (DAP) runs a 2:1 pulley
+// ratio — the number on the stack is roughly half the force at your hand. The
+// four-station lat pulldown / row unit runs 1:1. Same effort, very different
+// numbers. Pick whichever machine is free, but log it under the matching
+// variant so progression is only ever compared like-for-like.
 const FULLBODY = [
   { id:'squat',  name:'Back squat',            sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
     variants:['Back squat','Leg press','Hack squat','Goblet squat','Bulgarian split squat'] },
@@ -154,11 +160,11 @@ const FULLBODY = [
   { id:'lateral',name:'Lateral raise',         sets:2, target:'12–15', hasWeight:true,  restSecs:60,  timeBased:false,
     variants:['Lateral raise','Cable lateral raise','Machine lateral raise'] },
   { id:'facepull',name:'Face pull',            sets:2, target:'15–20', hasWeight:true,  restSecs:60,  timeBased:false,
-    variants:['Face pull','Band face pull','Reverse pec deck'] },
+    variants:['Face pull','Face pull (DAP)','Face pull (4-station)','Band face pull','Reverse pec deck'] },
   { id:'arms',   name:'Curl + pushdown superset', sets:2, target:'10–12', hasWeight:true, restSecs:60, timeBased:false,
-    variants:['Curl + pushdown superset','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
+    variants:['Curl + pushdown superset','Curl + pushdown (DAP)','Curl + pushdown (4-station)','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
   { id:'core',   name:'Pallof press',          sets:2, target:'10–12/side', hasWeight:true, restSecs:60, timeBased:false,
-    variants:['Pallof press','Suitcase carry','Dead bug','Back extension','Hanging knee raise','Ab wheel rollout'] },
+    variants:['Pallof press','Pallof press (DAP)','Pallof press (4-station)','Suitcase carry','Dead bug','Back extension','Hanging knee raise','Ab wheel rollout'] },
 ];
 const SESSION_LABEL = 'Full Body';
 
