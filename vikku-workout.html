@@ -134,7 +134,7 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6inZ8RaDNrfpFekaHP
 // Exercise definitions — 2S Full-Body template
 // restSecs: 120 on heavy compounds (paired, so rest fills productively), 60-90 on lighter work
 // timeBased: true = seconds input instead of reps
-// variants: alternative exercise names (rotate across Mon/Wed/Fri)
+// variants: alternative exercise names, first entry is always the anchor (★)
 // Order follows the gym floor: squat and RDL back-to-back at the barbell,
 // then bench and OHP, then migrate once to the cable station (row, pulldown),
 // then Block D, and finish with a core / lower-back stability move.
@@ -143,7 +143,17 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6inZ8RaDNrfpFekaHP
 // ratio — the number on the stack is roughly half the force at your hand. The
 // four-station lat pulldown / row unit runs 1:1. Same effort, very different
 // numbers. Pick whichever machine is free, but log it under the matching
-// variant so progression is only ever compared like-for-like.
+// variant so progression is only ever compared like-for-like. Because
+// four-station IS the anchor for these moves, it's never listed as its own
+// tagged variant, only the plain name and the DAP-tagged one.
+//
+// ISO-LATERAL ROW: kept as a variant inside Seated cable row's dropdown, not
+// a separate required block, so picking it doesn't add a third back exercise
+// to the session. Every variant already tracks its own last-session number
+// by exact name, so Iso-lateral row's 70-90lbs and Seated cable row's
+// 115-145lbs never blend into one trend line regardless of which block they
+// live in. Dumbbell row is the busy-gym backup here, flagged until its
+// numbers are logged and checked against the Hammer Strength side.
 const FULLBODY = [
   { id:'squat',  name:'Back squat',            sets:2, target:'6–10',  hasWeight:true,  restSecs:120, timeBased:false,
     variants:['Back squat','Leg press','Hack squat','Goblet squat','Bulgarian split squat'] },
@@ -154,17 +164,17 @@ const FULLBODY = [
   { id:'vpush',  name:'Barbell OHP',           sets:2, target:'8–10',  hasWeight:true,  restSecs:120, timeBased:false,
     variants:['Barbell OHP','Dumbbell shoulder press','Machine shoulder press','Arnold press'] },
   { id:'row',    name:'Seated cable row',      sets:2, target:'8–10',  hasWeight:true,  restSecs:90,  timeBased:false,
-    variants:['Seated cable row','Barbell bent-over row','Chest-supported row','Machine row','Dumbbell row'] },
+    variants:['Seated cable row','Barbell bent-over row','Chest-supported row','Iso-lateral row','Iso-lateral row (Dumbbell)'] },
   { id:'vpull',  name:'Lat pulldown',          sets:2, target:'8–12',  hasWeight:true,  restSecs:90,  timeBased:false,
     variants:['Lat pulldown','Lat pulldown (neutral)','Assisted pull-up','Cable pullover'] },
   { id:'lateral',name:'Lateral raise',         sets:2, target:'12–15', hasWeight:true,  restSecs:60,  timeBased:false,
     variants:['Lateral raise','Cable lateral raise','Machine lateral raise'] },
   { id:'facepull',name:'Face pull',            sets:2, target:'15–20', hasWeight:true,  restSecs:60,  timeBased:false,
-    variants:['Face pull','Face pull (DAP)','Face pull (4-station)','Band face pull','Reverse pec deck'] },
+    variants:['Face pull','Face pull (DAP)','Band face pull','Reverse pec deck'] },
   { id:'arms',   name:'Curl + pushdown superset', sets:2, target:'10–12', hasWeight:true, restSecs:60, timeBased:false,
-    variants:['Curl + pushdown superset','Curl + pushdown (DAP)','Curl + pushdown (4-station)','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
+    variants:['Curl + pushdown superset','Curl + pushdown (DAP)','DB curl + rope pushdown','Hammer curl + overhead extension','Preacher curl + skull crusher'] },
   { id:'core',   name:'Pallof press',          sets:2, target:'10–12/side', hasWeight:true, restSecs:60, timeBased:false,
-    variants:['Pallof press','Pallof press (DAP)','Pallof press (4-station)','Suitcase carry','Dead bug','Back extension','Hanging knee raise','Ab wheel rollout'] },
+    variants:['Pallof press','Pallof press (DAP)','Suitcase carry','Dead bug','Back extension','Hanging knee raise','Ab wheel rollout'] },
 ];
 const SESSION_LABEL = 'Full Body';
 
